@@ -13,7 +13,6 @@ func main() {
 	fmt.Println(de)
 	for i := 0; i < 10; i++ {
 		de.push_back(i)
-
 	}
 	fmt.Println(de)
 	fmt.Println(de.pop_back())
@@ -22,10 +21,11 @@ func main() {
 	fmt.Println(de)
 	fmt.Println(de.peekdeque('f'))
 	fmt.Println(de.peekdeque('b'))
+
 }
 
 type deque struct {
-	values [] int
+	values []int
 }
 
 func (de *deque) push_front(value int) {
