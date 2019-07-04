@@ -25,7 +25,7 @@ func main() {
 }
 
 type deque struct {
-	values []int
+	values [] interface{}
 }
 
 func (de *deque) push_front(value int) {
@@ -42,20 +42,20 @@ func (de *deque) push_back(value int) {
 	de.values = append(de.values, value)
 }
 
-func (de *deque) pop_back() int {
+func (de *deque) pop_back() interface{} {
 	x := de.values[len(de.values)-1]
 	de.values = de.values[:len(de.values)-1]
 	return x
 }
 
-func (de *deque) pop_front() int {
+func (de *deque) pop_front() interface{} {
 	x := de.values[0]
 	de.values = append(de.values[:0], de.values[1:]...)
 	return x
 }
 
-func (de *deque) peekdeque(side rune) int {
-	var x int
+func (de *deque) peekdeque(side rune) interface{} {
+	var x interface{}
 	if side == 'b' {
 		x = de.values[len(de.values)-1]
 	} else if side == 'f' {
