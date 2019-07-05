@@ -22,27 +22,31 @@ func main() {
 	var temptemp []string
 	var temp1 []string
 	var temp2 []string
-	ii,jj:=0,0
-	var b,f int
-	for len(temp)>baseLength {
+	ii, jj := 0, 0
+	var b, f int
+	for len(temp) > baseLength {
 
 		for i := 0; i < len(temp); i++ {
-			if temp[i]==" " {
-				for b=1;temp[i-b]!=" " && &temp[i-b]!=nil; b++ {
-					back[b-1]=temp[i-b]
+			if temp[i] == " " {
+				for b = 0; temp[i-b-1] != " " && (i-b-1) >= 0 && i > b; b++ {
+					//fmt.Fprintln(b)
+					back[b] = temp[i-b+1]
 				}
 
-				for z := len(back)/2-1; z >= 0; z-- {
-					opp := len(back)-1-z
+				fmt.Print(back)
+
+				for z := len(back)/2 - 1; z >= 0; z-- {
+					opp := len(back) - 1 - z
 					back[z], back[opp] = back[opp], back[z]
 				}
 
-				for f=1;temp[i+f]!=" "  && &temp[i+k]!=nil; f++ {
-					forward[f]=temp[i+f]
+				for f = 0; temp[i+f] != " " && &temp[i+f] != nil; f++ {
+					forward[f] = temp[i+f]
 				}
 
+				fmt.Print(forward)
 
-				ii,jj=0,0
+				ii, jj = 0, 0
 				for k := 0; k < b+f; k++ {
 					if ii > b-1 && jj <= f-1 {
 						temptemp[k] = forward[jj]
@@ -59,10 +63,10 @@ func main() {
 					}
 				}
 
-				temp1=temp[0:i-b]
-				temp2=temp[i+f:len(temp)]
-				temp=append(temp1,temptemp...)
-				temp=append(temp,temp2...)
+				temp1 = temp[0 : i-b]
+				temp2 = temp[i+f : len(temp)]
+				temp = append(temp1, temptemp...)
+				temp = append(temp, temp2...)
 
 			}
 
